@@ -1,16 +1,16 @@
 import { createContext, useContext, useEffect, useRef, useState } from 'react';
 import { Octokit } from "@octokit/rest";
-import { useSession } from "next-auth/react";
+import { useUser } from '@auth0/nextjs-auth0';
 
 const Context = createContext(null);
 
 export function GithubContext({ children }) {
-    const { data: session } = useSession();
+    const { user, error, isLoading } = useUser();
     const octokit = useRef();
     const [repos, setRepos] = useState([]);
 
     useEffect(() => {
-        if(!session)
+        if(!user)
             return
 
         octokit.current = new Octokit({
@@ -24,12 +24,15 @@ export function GithubContext({ children }) {
         // }
         //
         // onLoad();
-    }, [session]);
+    }, [user]);
 
     const github = {
         repos,
         octokit: octokit.current,
     };
+
+    if (isLoading) return <div>Loading...</div>;
+    if (error) return <div>{error.message}</div>;
 
     return (
         <Context.Provider value={github}>{children}</Context.Provider>

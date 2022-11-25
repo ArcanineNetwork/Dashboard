@@ -1,11 +1,13 @@
-import { SessionProvider } from "next-auth/react"
+import '../styles/globals.css'
+import { UserProvider, withPageAuthRequired } from '@auth0/nextjs-auth0';
 
-function CodeReviewApplication({ Component, pageProps: { session, ...pageProps } }) {
+function ArcaninePlatform({ Component, pageProps: { session, ...pageProps } }) {
+  const AuthorizedComponent = withPageAuthRequired(Component);
   return (
-    <SessionProvider session={session} baseUrl='https://dev.uncensored.tech/'>
-      <Component {...pageProps} />
-    </SessionProvider>
+    <UserProvider>
+      <AuthorizedComponent {...pageProps} />
+    </UserProvider>
   )
 }
 
-export default CodeReviewApplication
+export default ArcaninePlatform

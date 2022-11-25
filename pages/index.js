@@ -3,17 +3,8 @@ import { useSession, signIn, signOut } from "next-auth/react"
 import { octokit } from '../lib/octokit';
 import { useEffect, useState } from 'react';
 
-// styles
-import { styled } from '@mui/system';
-import { Container } from "@mui/material";
 import GithubSignIn from "../components/GithubSignIn";
 import { GithubContext } from '../components/Github/GithubContext';
-
-const Centered = styled('div')({
-  display: 'flex',
-  justifyContent: 'center',
-  flexDirection: 'column'
-})
 
 export default function Home() {
 
@@ -25,14 +16,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Container>
-        <Centered>
-          <h1>Code Review</h1>
-          <GithubContext>
-            <GithubSignIn />
-          </GithubContext>
-        </Centered>
-      </Container>
+      <h1>Code Review</h1>
+      <GithubContext>
+        <GithubSignIn />
+      </GithubContext>
     </div>
   )
 }

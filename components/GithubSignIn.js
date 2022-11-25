@@ -1,20 +1,21 @@
-import {signIn, signOut, useSession} from "next-auth/react";
 import Box from "@mui/material/Box";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
+import { useUser } from '@auth0/nextjs-auth0';
 import { useGithubContext } from './Github/GithubContext';
 import RepoProvider from "./Github/RepoProvider";
+import Link from 'next/link';
 
 export default function GithubSignIn() {
     const { repos } = useGithubContext();
-    const { data: session } = useSession();
+    const { user, error, isLoading } = useUser();
 
-    if(!session) {
+    if(!user) {
         return (
             <>
-                <button onClick={() => signIn("github")}>
+                <button>
                     Sign in with Github
                 </button>
             </>
@@ -40,10 +41,10 @@ export default function GithubSignIn() {
                 </FormControl>
             </Box>
             <p>
-                Not {session.user.name || session.user.email}? Then
+                Not {user.name || user.email}? Then
                 Logout and login again
             </p>
-            <button onClick={() => signOut()}>Logout</button> <br />
+            <button><Link href="/api/auth/logout">Logout</Link></button> <br />
         </>
     );
 }
