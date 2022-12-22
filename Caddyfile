@@ -1,3 +1,6 @@
+# run from windows powershell:
+# caddy reverse-proxy --from dev.uncensored.tech --to :3000
+
 dev.uncensored.tech {
     reverse_proxy localhost:3000
     tls internal

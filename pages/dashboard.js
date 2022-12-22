@@ -17,11 +17,6 @@ const navigation = [
     { name: 'Code Review', href: '#', icon: HomeIcon, current: true },
 ]
 
-function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
-}
-
-
 export default function Dashboard() {
     return (
         <Layout>

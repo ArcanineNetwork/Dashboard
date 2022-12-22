@@ -19,7 +19,7 @@ body {
   background: #454851;
 }
 
-nav {
+#header {
   box-shadow: 0px 15px 15px -15px #0d1118;
   position:relative;
   z-index: 1;
