@@ -1,7 +1,7 @@
 # run from windows powershell:
 # caddy reverse-proxy --from dev.uncensored.tech --to :3000
 
-dev.uncensored.tech {
+dev.arcanine.io {
     reverse_proxy localhost:3000
     tls internal
 }

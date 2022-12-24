@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "serve": "sudo /tmp/caddy run"
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^1.9.2",
@@ -15,11 +16,15 @@
     "@headlessui/react": "^1.7.4",
     "@heroicons/react": "^2.0.13",
     "@mui/material": "^5.10.2",
+    "@octokit/app": "^13.1.0",
+    "@octokit/auth-app": "^4.0.7",
+    "@octokit/core": "^4.1.0",
     "@octokit/rest": "^19.0.4",
     "auth0": "^2.44.0",
     "next": "^13.0.2",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "zustand": "^4.1.5"
   },
   "devDependencies": {
     "@types/node": "^18.11.17",
