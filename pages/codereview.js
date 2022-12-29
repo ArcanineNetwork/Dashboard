@@ -23,7 +23,7 @@ export default function CodeReview() {
     const [selectedRepoIndex, setSelectedRepoIndex] = useState(0);
 
     function loginToGithub() {
-        router.push('https://github.com/login/oauth/authorize?client_id=Iv1.089f255a91f32ea5&scope=repo');
+        router.push('https://github.com/apps/arcanine-dev-bot/installations/new');
     }
 
     useEffect(() => {

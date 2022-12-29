@@ -49,35 +49,31 @@ async function start(req, res) {
     // });
 
     let octokitClient = await app.getInstallationOctokit(devInstallationId);
-        // .request(`GET /applications/${process.env.GITHUB_CLIENT_ID}/`);
-    let { data: testResponse } = await octokitClient.request(`GET /repos/${json.repository_owner}/${json.repository_name}`);
 
-    console.log('testResponse', testResponse);
+    let { data: testResponse } = await octokitClient.request(`GET /repos/${json.repository_owner}/${json.repository_name}`);
 
     let { data: arcanineResponse } = await octokitClient.rest.repos.get({
         owner: 'ArcanineNetwork',
         repo: 'hack-or-snooze',
     });
 
-    console.log('arcanineReponse', arcanineResponse);
+    console.log(arcanineResponse);
 
-    // let { data: repoResponse } = await client.rest.repos.get({
-    //     owner: 'ArcanineNetwork',
-    //     repo: 'hack-or-snooze',
-    // })
-    //
-    // console.log(repoResponse);
-    //
-    // const studentClient = new Octokit({
-    //     auth: json.token
-    // });
-    //
-    // let { data: studentData } = await studentClient.rest.repos.get({
-    //     owner: json.repository_owner,
-    //     repo: json.repository_name
-    // });
-    //
-    // console.log('studentData', studentData);
+    // create new repo from template
+    await octokitClient.rest.repos.createUsingTemplate({
+        template_owner: 'ArcanineNetwork',
+        template_repo: 'hack-or-snooze',
+        owner: 'ArcanineNetwork',
+        name: 'a2',
+    });
+
+    // share make a PR from their repo against the new repo
+    await octokitClient.rest.pulls.create({
+        owner,
+        repo,
+        head,
+        base,
+    });
 }
 
 export default start;
