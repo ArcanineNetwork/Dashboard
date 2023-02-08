@@ -1,28 +1,14 @@
-import {
-    Bars3Icon,
-    CalendarIcon,
-    HomeIcon,
-    MagnifyingGlassCircleIcon,
-    MapIcon,
-    MegaphoneIcon,
-    UserGroupIcon,
-    XMarkIcon,
-} from '@heroicons/react/24/outline';
-
-import GithubSignIn from "../components/GithubSignIn";
-import { GithubContext } from '../components/Github/GithubContext';
 import Layout from "../components/layout";
-
-const navigation = [
-    { name: 'Code Review', href: '#', icon: HomeIcon, current: true },
-]
+import Box from "../components/box";
 
 export default function Dashboard() {
     return (
         <Layout>
-           <div>
-               Dashboard
-           </div>
+            <Box title='Activity'>
+                <div>
+                    Dashboard
+                </div>
+            </Box>
         </Layout>
     )
 }

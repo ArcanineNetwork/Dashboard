@@ -1,18 +1,11 @@
-import Navbar from '../components/Navbar';
-import Sidebar from '../components/Sidebar';
-import {GithubContext} from "./Github/GithubContext";
-import GithubSignIn from "./GithubSignIn";
-
-import {Fragment, useState} from 'react'
-import {Dialog, Disclosure, Transition} from '@headlessui/react'
-import {
-    Bars3Icon,
-    XMarkIcon,
-} from '@heroicons/react/24/outline'
+import { useState } from 'react'
+import { Disclosure, Transition } from '@headlessui/react'
 import Header from "./Header";
+import Sidebar from '../components/Sidebar';
 
-export default function Layout({children}) {
-    const [sidebarOpen, setSidebarOpen] = useState(true)
+export default function Layout({children, showAside = false}) {
+    const [sidebarOpen, setSidebarOpen] = useState(true);
+    const [asideOpen, setAsideOpen] = useState(showAside);
 
     return (
         <div className="relative flex h-full flex-col">
@@ -51,13 +44,17 @@ export default function Layout({children}) {
                         {/* End main area */}
                     </main>
 
-                    <aside className="relative hidden w-96 flex-shrink-0 overflow-y-auto border-l border-gray-200 xl:flex xl:flex-col">
-                        {/* Start secondary column (hidden on smaller screens) */}
-                        <div className="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
-                            <div className="h-full" />
-                        </div>
-                        {/* End secondary column */}
-                    </aside>
+                    {
+                        asideOpen && (
+                            <aside className="relative hidden w-96 flex-shrink-0 overflow-y-auto border-l border-gray-200 xl:flex xl:flex-col">
+                                {/* Start secondary column (hidden on smaller screens) */}
+                                <div className="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
+                                    <div className="h-full" />
+                                </div>
+                                {/* End secondary column */}
+                            </aside>
+                        )
+                    }
                 </div>
             </div>
         </div>
