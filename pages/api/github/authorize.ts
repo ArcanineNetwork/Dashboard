@@ -7,8 +7,11 @@ async function authorize(req, res) {
         client_id: process.env.GITHUB_CLIENT_ID,
         client_secret: process.env.GITHUB_CLIENT_SECRET,
         code,
-        redirect_uri: 'https://dev.arcanine.io/codereview',
+        redirect_uri: 'https://k8s.arcanine.io/codereview',
     };
+
+    console.log('params', params);
+    
     const query = Object.keys(params).map(key => key + '=' + params[key]).join('&');
     const response = await fetch('https://github.com/login/oauth/access_token?' + query, {
         headers:{

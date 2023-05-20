@@ -19,7 +19,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "paths": {
-      "@lib/*": ["lib/*"]
+      "@lib/*": ["./lib/*"]
     }
   },
   "include": [

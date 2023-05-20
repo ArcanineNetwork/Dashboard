@@ -68,12 +68,12 @@ async function start(req, res) {
     });
 
     // share make a PR from their repo against the new repo
-    await octokitClient.rest.pulls.create({
-        owner,
-        repo,
-        head,
-        base,
-    });
+    // await octokitClient.rest.pulls.create({
+    //     owner,
+    //     repo,
+    //     head,
+    //     base,
+    // });
 }
 
 export default start;
